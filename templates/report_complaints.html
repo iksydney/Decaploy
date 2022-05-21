@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View and Update complaints
+{% endblock %}
+
+{% block main %}
+            <div class="delete">
+                <h2 style="text-align: center; margin-bottom: 10px;">All Complaints</h2>
+                <p style="color: green; text-align: center; margin-bottom: 10px;">{{ success }}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Complaint</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                            <!-- <th>Action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row["id"] }}</td>
+                                <td>{{ row["firstname"] }}</td>
+                                <td>{{ row["lastname"] }}</td>
+                                <td>{{ row["complaint"] }}</td>
+                                {% if success == none %}
+                                    <td class="warning">{{ row["status"] }}</td>
+                                {% else %}
+                                    <td class="primary">{{ row["status"] }}</td>
+                                {% endif %}
+                                    <td class="primary"><a href="/review_complaints?id={{ row["id"] }}">Review</a></td>
+                                <!-- <td class="danger"><a style="color: red;"href="/delete_employee?id={{ row["id"] }}">Reject</a></td> -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

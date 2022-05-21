@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Tasks
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/item_request" class="table" method="post">
+                    <h2>Request Item</h2>
+                    <span>{{ success }}</span>
+                    <div class="assign">
+                        <select name="item" id="">
+                            <option value="">Select Item</option>
+                            {% for item in items %}
+                                <option value="{{item["id"]}}">{{item["item"]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="addresss">
+                        <input type="number" name="qty" placeholder="quantity">
+                    </div>
+                    <button class="add">Request</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Items
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/item" class="table" method="post">
+                    <h2>Add Items</h2>
+                    <span>{{ success }}</span>
+                    <div class="names">
+                        <textarea name="item" id="" cols="30" rows="10" autofocus style="height: 70px;"></textarea>
+                    </div>
+                    <button class="add">Add Item</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Items
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <h2>All Employees</h2>
+                <p style="color: green;">{{ success }}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Details</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row["id"] }}</td>
+                                <td>{{ row["first_name"] }}</td>
+                                <td>{{ row["last_name"] }}</td>
+                                <td>{{ row["email"] }}</td>
+                                <td>{{ row["phone"] }}</td>
+                                <td class="primary"><a href="/employee_detail?id={{ row["id"] }}">Update/Details</a></td>
+                                <td class="danger"><a style="color: red;"href="/delete_employee?id={{ row["id"] }}">Delete</a></td>
+                            </tr>
+                            {% set count = count + 2 %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

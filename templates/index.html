@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+     <h1>Dashboard</h1>
+     <h3 style="color: red;">{{ error }}</h3>
+     <p style="color: green;">{{  success }}</p>
+            <div class="date">
+                <input type="date" name="" id="">
+            </div>
+
+            <div class="insights">
+                <div class="total">
+                    <span class="material-icons-sharp">analytics</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Employees</h3>
+                            <h1>{{ session["employees"] }}</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>100%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last Week</small> -->
+                </div>
+                <!-- End of Employees -->
+
+                <div class="complaints">
+                    <span class="material-icons-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Complaints</h3>
+                            <h1>{{ session["complaint_count"] }}</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>100%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last Week</small> -->
+                </div>
+                <!-- End of Total Complaints -->
+
+                <div class="tasks">
+                    <span class="material-icons-sharp">bar_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Tasks</h3>
+                            <h1>{{ session["tasks"] }}</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>100%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <small class="text-muted">Last Week</small> -->
+                    <!-- End of tasks -->
+                </div>
+            </div>
+
+            <div class="recent">
+                <h2>Recent Tasks</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Assinged To</th>
+                            <th>Assigned Task</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row["id"] }}</td>
+                                <td>{{ row["firstname"] }} {{ row["lastname"] }}</td>
+                                <td>{{ row["task"] }}</td>
+                                <td>{{ row["due_date"] }}</td>
+                                <td class="danger"><a style="color: red;"href="/delete_tasks?id={{ row["id"] }}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

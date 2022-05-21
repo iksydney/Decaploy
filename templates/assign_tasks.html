@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Tasks
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/assign" class="table" method="post">
+                    <h2>Assign Tasks</h2>
+                    <span>{{ success }}</span>
+                    <div class="assign">
+                        <select name="assigned_task" id="">
+                            <option value="">Select Task</option>
+                            {% for task in tasks %}
+                                <option value="{{task["id"]}}">{{task["task"]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="assign">
+                        <select name="employee" id="">
+                            <option value="">Select Employee</option>
+                            {% for employee in employees %}
+                                <option value="{{employee["id"]}}">{{employee["first_name"]}} {{employee["last_name"]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="assign">
+                        <input type="date" name="due_date" required placeholder="Due Date">
+                    </div>
+                    <button class="add">Assign</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

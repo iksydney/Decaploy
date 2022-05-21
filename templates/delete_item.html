@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete Items
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/delete_item" class="table" method="post">
+                    <h2>Delete Items</h2>
+                    <span>{{ success }}</span>
+                    <span style="color: red;">{{ error }}</span>
+                    <div class="assign">
+                        <select name="item" id="">
+                            <option value="">Select Item</option>
+                            {% for item in items %}
+                                <option value="{{item["id"]}}">{{item["item"]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="add">Delete</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Assigned Tasks
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <h2 style="text-align: center">All Tasks</h2>
+                <p style="color: green; text-align: center;">{{ success }}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Assinged To</th>
+                            <th>Assigned Task</th>
+                            <th>Due Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row["id"] }}</td>
+                                <td>{{ row["firstname"] }} {{ row["lastname"] }}</td>
+                                <td>{{ row["task"] }}</td>
+                                <td>{{ row["due_date"] }}</td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

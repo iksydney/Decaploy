@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./static/images/logo.jpeg" alt="">
+                    <h2>DECA <span class="danger"> TIME </span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            {% if session["user_role"] == 1 %}
+                <div class="sidebar">
+                    <a href="/">
+                        <span class="material-icons-sharp">grid_view</span>
+                        <h3>Dashboard</h3>
+                    </a>
+                    <a href="/report_employee" class="">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>Employees</h3>
+                    </a>
+                    <a href="/report_item" class="">
+                        <span class="material-icons-sharp">receipt_long</span>
+                        <h3>Items</h3>
+                    </a>
+                    <a href="report_task" class="">
+                        <span class="material-icons-sharp">insights</span>
+                        <h3>Tasks</h3>
+                    </a>
+                    <a href="/report_complaints" class="">
+                        <span class="material-icons-sharp">mail_outline</span>
+                        <h3>Complaints</h3>
+                        <span class="message-count">{{ session["complaint_count"] }}</span>
+                    </a>
+                    <a href="/report_leave" class="">
+                        <span class="material-icons-sharp">report_gmailerrorred</span>
+                        <h3>Leave Requests</h3>
+                        <!-- <span class="message-count">4</span> -->
+                    </a>
+                    <a href="/report_requisition" class="">
+                        <span class="material-icons-sharp">report_gmailerrorred</span>
+                        <h3>Requisitions</h3>
+                        <!-- <span class="message-count">7</span> -->
+                    </a>
+                {% else %}
+                     <div class="sidebar">
+                    <a href="/">
+                        <span class="material-icons-sharp">grid_view</span>
+                        <h3>Dashboard</h3>
+                    </a>
+                    <a href="report_task" class="">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>Tasks</h3>
+                    </a>
+                    <a href="/report_requisition" class="">
+                        <span class="material-icons-sharp">receipt_long</span>
+                        <h3>Requested Items</h3>
+                    </a>
+                    <a href="/report_leave" class="">
+                        <span class="material-icons-sharp">insights</span>
+                        <h3>Leave Requests</h3>
+                    </a>
+                    <a href="/report_complaints" class="">
+                        <span class="material-icons-sharp">mail_outline</span>
+                        <h3>Complaints</h3>
+                    </a>
+                    <!-- <a href="#" class="">
+                        <span class="material-icons-sharp">report_gmailerrorred</span>
+                        <h3>Reports</h3>
+                    </a> -->
+                {% endif %}
+                <a href="/logout" class="">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- --------------- END OF ASIDE-------- -->
+        <main>
+
+             {% block main %}{% endblock %}
+
+        </main>
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Welcome <b>{{ session["user_name"] }}</b></p>
+                        <small class="text-muted"></small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="./static/images/download.png" alt="Profile Picture">
+                    </div>
+                </div>
+            </div>
+            <!-- End of Top -->
+            <div class="recent-updates">
+                <!-- <h2>Recent Updates</h2> -->
+                <!-- <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/decadev.jpg" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Ikenna</b> received a task of implementing User stories</p>
+                            <small class="text-muted">5 Minutes ago</small>
+                        </div>
+                    </div>
+                </div> -->
+
+                    <!-- <div class="updates">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="./images/decadev.jpg" alt="">
+                            </div>
+                            <div class="message">
+                                <p><b>Seun</b> received a task of implementing Scouting for Junior java developer</p>
+                                <small class="text-muted">8 Minutes ago</small>
+                            </div>
+                        </div>
+                    </div> -->
+
+                        <!-- <div class="updates">
+                            <div class="update">
+                                <div class="profile-photo">
+                                    <img src="./images/decadev.jpg" alt="">
+                                </div>
+                                <div class="message">
+                                    <p><b>Cindicate</b> received a task of implementing creating a software architecture</p>
+                                    <small class="text-muted">30 Minutes ago</small>
+                                </div>
+                            </div>
+                        </div> -->
+            </div>
+            <!-- =====+End of Updates===== -->
+            <div class="analytics">
+                <!-- <h2>Staff Analytics</h2> -->
+                <!-- <div class="item online">
+                    <div class="icon">
+                        <span class="material-icons-sharp">person</span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>Staff Present</h3>
+                            <small class="text-muted">Last 8 hours</small>
+                        </div>
+                        <h5 class="success">+94%</h5>
+                        <h3>Total: 500</h3>
+                    </div>
+                </div>
+
+                <div class="item absent">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            person_add_disabled
+                            </span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>Staff absent</h3>
+                            <small class="text-muted">Last 7 days</small>
+                        </div>
+                        <h5 class="danger">4%</h5>
+                        <h3>Total: 10</h3>
+                    </div>
+                </div>
+
+                <div class="item employees">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            logout
+                            </span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>Staff On break and Or Leave</h3>
+                            <small class="text-muted">Last 30 days</small>
+                        </div>
+                        <h5 class="success">2%</h5>
+                        <h3>Total: 30</h3>
+                    </div>
+                </div> -->
+                {% if session["user_role"] == 1 %}
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/add_employee">
+                                <span class="material-icons-sharp">add</span>
+                                <h3>Add Employee</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/task">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Add Task</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/assign">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Assign Tasks</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/delete_task">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Remove Tasks</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/item">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Add Items</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/delete_item">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Remove Items</h3>
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="item add-employee">
+                    <div>
+                        <a href="/leave_request">
+                        <span class="material-icons-sharp">add</span>
+                        <h3>Leave Request</h3>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/item_request">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Item Requsition</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/complaint">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Make A Complaint</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/edit_profile">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Update Profile</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item add-employee">
+                        <div>
+                            <a href="/security">
+                            <span class="material-icons-sharp">add</span>
+                            <h3>Security</h3>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="/static/index.js"></script>
+</body>

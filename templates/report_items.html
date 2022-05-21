@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Items
+{% endblock %}
+
+{% block main %}
+            <div class="delete">
+                <h2>All Items</h2>
+                <p style="color: green;">{{ success }}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row["id"] }}</td>
+                                <td>{{ row["item"] }}</td>
+                                <td class="danger"><a style="color: red;"href="/delete_items?id={{ row["id"] }}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

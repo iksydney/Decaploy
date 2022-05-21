@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Tasks
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/leave_request" class="table" method="post">
+                    <h2>Leave Request</h2>
+                    <span>{{ success }}</span>
+                    <div class="names">
+                        <textarea name="reason" id="" cols="30" rows="10" autofocus required>Reason for leave request ....</textarea>
+                    </div>
+                    <div class="tell">
+                        <label for="">Start Date</label>
+                         <input type="date" placeholder="Start Date" name="start_date" required><br>
+                         <label for="">End Date</label>
+                        <input type="date" placeholder="End Date" name="end_date" required>
+                    </div>
+                    <button class="add">Request</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Tasks
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/complaint" class="table" method="post">
+                    <h2>Make A Complain</h2>
+                    <span>{{ success }}</span>
+                    <div class="names">
+                        <textarea name="complain" id="" cols="30" rows="10" autofocus></textarea>
+                    </div>
+                    <button class="add">Complain</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

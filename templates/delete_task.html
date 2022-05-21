@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Items
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/delete_task" class="table" method="post">
+                    <h2> Tasks</h2>
+                    <span>{{ success }}</span>
+                    <div class="assign">
+                        <select name="task" id="">
+                            <option value="">Select Task</option>
+                            {% for task in tasks %}
+                                <option value="{{task["id"]}}">{{task["task"]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="add">Delete</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

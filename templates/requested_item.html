@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View Requisitions
+{% endblock %}
+
+{% block main %}
+            <div class="delete">
+                <h2 style="text-align: center; margin-bottom: 10px;">All Requisitions</h2>
+                <p style="color: green; text-align: center; margin-bottom: 10px;">{{ success }}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Requested By</th>
+                            <th>Requested Item</th>
+                            <th>Status</th>
+                            <!-- <th>Action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                <td>{{ row["id"] }}</td>
+                                <td>{{ row["firstname"] }} {{ row["lastname"] }}</td>
+                                <td>{{ row["request"] }}</td>
+                                {% if success == none %}
+                                    <td class="warning">{{ row["status"] }}</td>
+                                {% else %}
+                                    <td class="primary">{{ row["status"] }}</td>
+                                {% endif %}
+                                <!-- <td class="secondary"><a style="color: green" href="/approve_leave?id={{ row["id"] }}&status=approve">Approve</a></td>
+                                <td class="danger"><a style="color: red;"href="approve_leave?id={{ row["id"] }}&status=reject">Reject</a></td> -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}

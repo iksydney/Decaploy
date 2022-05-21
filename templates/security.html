@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Password Change
+{% endblock %}
+
+{% block main %}
+            <div class="recent">
+                <form action="/security" class="table" method="post">
+                    <h2>Password Change</h2>
+                    <span style="text-align: center">{{ success }}</span>
+                    <span style="text-align: center; color: red">{{ error }}</span>
+                     <div class="names">
+                        <input type="password" placeholder="Old Password" name="old_password" required>
+                        <input type="password" placeholder="New Password" name="password">
+                        <input type="password" placeholder="Retype New Password" name="comfirmation" required>
+                    </div>
+                    <button class="add">Change</button>
+                </form>
+                <!-- <a href="#" class="">Show all</a> -->
+            </div>
+{% endblock %}
